@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Note-Taking-App</title>
+</head>
+<body>
+ <div class="main min-h-screen w-full bg-zinc-800">
+    <div class="form p-10 text-white">
+        <form action="/create" method="post">
+            <input type="text" class = "block px-5 bg-zinc-600  mt-8 py-3 w-full  rounded-lg outline-none text-white" placeholder="Title goes here" name="title">
+            <textarea placeholder="Write your Task Details" class="block px-5 bg-zinc-600 resize-none mt-8 py-3 w-full rounded-lg outline-none text-white" name="details"></textarea>
+            <input type="submit" value="Create tasks" class="bg-blue-600 mt-4 px-5 py-2 rounded-lg cursor-pointer">
+        </form>
+    </div>
+    <div class="tasks p-10 flex flex-wrap gap-3 ">
+    <% if(files.length>0){ %>
+    <!-- if files are more than one , then render each file in the array dir files, else render text -->
+        <% files.forEach(function(val){ %>
+            <div class="task min-w-72  px-3 py-4 bg-zinc-600 rounded-lg">
+              <h1 class="text-white text-3xl tracking-tigher"> <%=  val %></h1>
+              <a href="/file/<%= val %>" class="text-blue-500  inline-block mt-3 mx-6 rounded-lg tracking-tighter">Read More</a>
+              <form action="/delete/<%= val %>" method="POST" class="inline">
+                <button type="submit" class="delete-btn text-blue-500 inline-block mt-3 mx-6 rounded lg tracking-tighter">Delete</button>
+            </form>
+            </div>
+        <% }) %>
+         <!-- rendering files -->
+   <%  } else { %>
+   
+        <!-- render the text if no files are there  -->
+        <h3 class="text-zinc-500">No Tasks Yet</h3>
+   <% }%>
+    </div>
+    <!-- server side code ends ./ ejs....  -->
+ </div>
+</body>
+ <!-- for delete functionality  -->
+    <script>
+        // after the page has loaded , this runs on browser not on server. , delete the buttons.    
+        document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      if (!confirm('Are you sure you want to delete this?')) {
+        e.preventDefault(); // Prevent form submission if the user cancels
+      }
+    });
+  });
+    </script>
+</html>

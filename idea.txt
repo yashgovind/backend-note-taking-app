@@ -1,0 +1,8 @@
+we need to make a note taking app where we can write title and a body will be there , the files will be stored locally in a directory
+to do that we need to first create a ui and style it. the ui will contain a form with input  , textarea and a submit button , it will 
+also contain tasks . with a title and a readMore , which will be forwarded to a new route with the name as its title. and the data will be displayed there.
+
+step-1 : create the ui. design the css of form and cards  in ejs index.ejs file.
+step-2: create a main / route and read for the files.  if files are present , render all the files using a array and loop or for each,  the file-part css in index.ejs else 
+render the text h1. 
+step-3 : 

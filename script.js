@@ -34,6 +34,7 @@ app.get('/file/:filename',function(req,res){
      res.render('show' , {filename:req.params.filename , filedata:filedata});
     });
     })  
+    
 app.post('/create' , function(req,res){
     // create a route post whenever clicked on readMore with the fileName entered in form and rendering the data entered in the text-area
     fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt`,req.body.details , function(err){

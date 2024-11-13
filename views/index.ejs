@@ -32,7 +32,7 @@
    
         <!-- render the text if no files are there  -->
         <h3 class="text-zinc-500">No Tasks Yet</h3>
-   <% }%>
+   <% }%>   
     </div>
     <!-- server side code ends ./ ejs....  -->
  </div>
@@ -42,9 +42,6 @@
         // after the page has loaded , this runs on browser not on server. , delete the buttons.    
         document.querySelectorAll('.delete-btn').forEach(button => {
     button.addEventListener('click', (e) => {
-      if (!confirm('Are you sure you want to delete this?')) {
-        e.preventDefault(); // Prevent form submission if the user cancels
-      }
     });
   });
     </script>
